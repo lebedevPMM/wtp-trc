@@ -69,6 +69,15 @@ export const onRequestPost = async ({ request, env }) => {
         SOURCE_DESCRIPTION: 'trc.wtp.ae',
     };
 
+    // Assign lead to a specific Bitrix user (optional env var).
+    // If unset, lead goes to the webhook creator by default.
+    if (env.BITRIX_ASSIGNED_TO_ID) {
+        const assignedId = Number(env.BITRIX_ASSIGNED_TO_ID);
+        if (Number.isInteger(assignedId) && assignedId > 0) {
+            fields.ASSIGNED_BY_ID = assignedId;
+        }
+    }
+
     if (messenger === 'telegram') {
         fields.UF_CRM_TELEGRAM = phone;
     }

@@ -52,6 +52,13 @@ npx wrangler pages secret put BITRIX_WEBHOOK_URL --project-name=wtp-trc
 
 Или через Dashboard → Pages → wtp-trc → Settings → Environment variables → Production → `BITRIX_WEBHOOK_URL = https://<portal>.bitrix24.ru/rest/<USER>/<CODE>`.
 
+**Опционально:** `BITRIX_ASSIGNED_TO_ID` — ID сотрудника, который будет ответственным за входящие лиды. Если не задан, лид попадает на пользователя, создавшего вебхук.
+
+```bash
+npx wrangler pages secret put BITRIX_ASSIGNED_TO_ID --project-name=wtp-trc
+# вставить число, например: 42
+```
+
 **3. Деплой:**
 
 ```bash
