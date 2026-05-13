@@ -13,6 +13,16 @@ functions/api/lead.js   ← CF Pages Function → Bitrix24 crm.lead.add
 public/                 ← favicon + og-image
 ```
 
+## GitHub Pages preview
+
+Visual preview лендинга (без работающей формы — GH Pages не запускает CF Functions):
+
+```
+https://lebedevpmm.github.io/wtp-trc/
+```
+
+На preview форма показывает уведомление «отправка отключена, пишите в Telegram» — это ожидаемо. Реальный submit работает только на Cloudflare Pages (см. Deploy ниже).
+
 ## Локальная разработка
 
 ```bash

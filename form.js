@@ -1,7 +1,10 @@
 // TRC lead form — vanilla JS submit to /api/lead (CF Pages Function proxies to Bitrix).
+// On GitHub Pages (no serverless functions) /api/lead returns 404 — show a preview notice.
 (() => {
     const form = document.getElementById('trc-form');
     if (!form) return;
+
+    const isGitHubPagesPreview = /\.github\.io$/i.test(window.location.hostname);
 
     const fields = {
         name: form.elements.name,
@@ -103,9 +106,17 @@
             referrer: (document.referrer || '').slice(0, 500),
         };
 
+        if (isGitHubPagesPreview) {
+            alerts.error.innerHTML =
+                'Это превью-версия на GitHub Pages — отправка заявок временно отключена. ' +
+                'Напишите нам напрямую: <a href="https://t.me/ivanborodach">@ivanborodach</a>.';
+            alerts.error.hidden = false;
+            return;
+        }
+
         setBusy(true);
         try {
-            const res = await fetch('/api/lead', {
+            const res = await fetch('api/lead', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
