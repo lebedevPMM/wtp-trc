@@ -148,6 +148,8 @@ p { line-height: 1.6; }
     position: sticky;
     top: 24px;
     min-width: 0;
+    /* Align form heading with H1 baseline (eyebrow ~36px + 24px margin) */
+    padding-top: 56px;
 }
 
 .form-card {
@@ -526,6 +528,7 @@ input.error {
     .hero-form-wrap {
         position: static;
         order: -1;
+        padding-top: 0;
     }
 
     .form-card { padding: 24px; }
