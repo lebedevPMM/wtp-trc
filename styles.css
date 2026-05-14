@@ -143,6 +143,33 @@ p { line-height: 1.6; }
     border-radius: 2px;
 }
 
+.hero-scroll-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 28px;
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+}
+
+.hero-scroll-hint:hover {
+    color: var(--text-primary);
+}
+
+.hero-scroll-hint span {
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.hero-scroll-hint:hover span {
+    transform: translateY(2px);
+}
+
 /* ====== Form card ====== */
 .hero-form-wrap {
     position: sticky;
@@ -494,6 +521,23 @@ input.error {
     margin-bottom: 18px;
 }
 
+/* Final-CTA: desktop shows button (form is sticky in hero), mobile shows full form */
+.cta-button-wrap { display: block; margin-bottom: 18px; }
+.cta-form-wrap { display: none; }
+
+.cta-form-wrap {
+    text-align: left;
+    margin: 8px auto 24px;
+    max-width: 520px;
+}
+
+.cta-form-wrap form {
+    display: grid;
+    gap: 16px;
+}
+
+.cta-form-wrap .submit-btn { width: 100%; }
+
 .cta-footnote {
     font-size: 13px;
     color: var(--text-tertiary);
@@ -518,18 +562,18 @@ input.error {
 
 /* ====== Responsive ====== */
 @media (max-width: 960px) {
-    .hero { padding: 40px 0 56px; }
+    .hero { padding: 40px 0 48px; }
 
     .hero-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 0;
     }
 
-    .hero-form-wrap {
-        position: static;
-        order: -1;
-        padding-top: 0;
-    }
+    /* Hero form is hidden on mobile — full form lives in Final CTA so the
+       page reads content-first, then form at the bottom (per stakeholder UX). */
+    .hero-form-wrap { display: none; }
+
+    .hero-scroll-hint { display: none; }
 
     .form-card { padding: 24px; }
 
@@ -545,6 +589,10 @@ input.error {
     .twocol { gap: 32px; }
 
     .cta-card { padding: 40px 24px; }
+
+    /* On mobile: swap CTA button for the in-card form */
+    .cta-button-wrap { display: none; }
+    .cta-form-wrap { display: block; }
 }
 
 @media (max-width: 480px) {

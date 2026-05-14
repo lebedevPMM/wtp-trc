@@ -35,13 +35,13 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-copy">
-                    <span class="eyebrow">WTP × Налоговое резидентство ОАЭ</span>
+                    <span class="eyebrow">Для резидентов ОАЭ с доходом или активами в России</span>
                     <h1>
                         Налоговый сертификат резидента ОАЭ (TRC).<br />
                         <em>Под новое СИДН Россия–ОАЭ 2026.</em>
                     </h1>
                     <p class="subhead">
-                        С 1 января 2026 года ставка налога у источника в России на дивиденды,
+                        С 1 января 2026 ставка налога у источника в России на дивиденды,
                         проценты и роялти для резидента ОАЭ — <strong>10% вместо 15%+</strong>.
                         Льгота работает только при действующем TRC. Подаём через EmaraTax,
                         средний срок — 5 рабочих дней. Для соглашения с Россией сертификат
@@ -53,6 +53,9 @@
                         <li>Зеркальное подтверждение для ФНС, если вы провели в РФ меньше 183 дней</li>
                         <li>Льготы по 130+ соглашениям ОАЭ об избежании двойного налогообложения</li>
                     </ul>
+                    <a href="#audience" class="hero-scroll-hint">
+                        Кому особенно нужен TRC <span aria-hidden="true">↓</span>
+                    </a>
                 </div>
 
                 <aside class="hero-form-wrap" id="lead-form">
@@ -62,8 +65,7 @@
                             Имя, телефон и удобный мессенджер — остальное обсудим в разговоре.
                         </p>
 
-                        <form id="trc-form" novalidate>
-                            <!-- Honeypot -->
+                        <form id="trc-form" data-trc-form novalidate>
                             <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
                             <div class="form-field">
@@ -120,6 +122,30 @@
                     </div>
                 </aside>
             </div>
+        </div>
+    </section>
+
+    <!-- AUDIENCE: For whom (moved up — answers "is this for me?") -->
+    <section class="section section--alt" id="audience">
+        <div class="container">
+            <h2>Для кого этот сертификат</h2>
+            <p class="section-lede">
+                TRC закрывает четыре налоговых вопроса сразу — российский статус резидентства,
+                ставку у источника, CRS-комплаенс для банков и применение льгот по 130+ соглашениям.
+                Заявка имеет смысл, если хотя бы один пункт ниже про вас.
+            </p>
+            <ul class="profiles">
+                <li>Получаете дивиденды из российских компаний</li>
+                <li>Планируете продажу российских активов</li>
+                <li>Инвестируете через зарубежных брокеров и брокерские структуры</li>
+                <li>Строите семейный холдинг или личный фонд за пределами РФ</li>
+                <li>Официально закрываете российский налоговый статус</li>
+                <li>Открываете или ведёте счета в private banking</li>
+            </ul>
+            <p class="note">
+                TRC оформляется заранее — <em>до</em> того, как возникнет налоговое событие
+                (выплата дивидендов, продажа актива, запрос ФНС). Потом — поздно.
+            </p>
         </div>
     </section>
 
@@ -220,25 +246,6 @@
         </div>
     </section>
 
-    <!-- WHO SHOULD ACT FIRST -->
-    <section class="section section--alt">
-        <div class="container">
-            <h2>Кому стоит подумать первым</h2>
-            <p class="section-lede">
-                TRC оформляется заранее — <em>до</em> того, как возникнет налоговое событие.
-                Если хотя бы один пункт ниже про вас — заявка имеет смысл уже сейчас.
-            </p>
-            <ul class="profiles">
-                <li>Получаете дивиденды из российских компаний</li>
-                <li>Планируете продажу российских активов</li>
-                <li>Инвестируете через зарубежных брокеров</li>
-                <li>Строите семейный холдинг или личный фонд</li>
-                <li>Официально закрываете российский налоговый статус</li>
-                <li>Открываете или ведёте счета в private banking за пределами РФ</li>
-            </ul>
-        </div>
-    </section>
-
     <!-- FINAL CTA -->
     <section class="section cta-section">
         <div class="container">
@@ -249,7 +256,67 @@
                     по какому пути подавать (183 / 90+ / интересы), что собрать из документов,
                     реалистичный срок и стоимость.
                 </p>
-                <a href="#lead-form" class="btn cta-btn">Оставить заявку</a>
+
+                <!-- Desktop: scroll button (form is sticky in hero) -->
+                <div class="cta-button-wrap">
+                    <a href="#lead-form" class="btn cta-btn">Оставить заявку</a>
+                </div>
+
+                <!-- Mobile: full form here (hero form is hidden on mobile) -->
+                <div class="cta-form-wrap">
+                    <form id="trc-form-mobile" data-trc-form novalidate>
+                        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+                        <div class="form-field">
+                            <label for="name-m">Имя <span class="required">*</span></label>
+                            <input type="text" id="name-m" name="name" autocomplete="given-name" placeholder="Как к вам обращаться" required minlength="2" maxlength="100" />
+                            <span class="form-error" data-error="name"></span>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="phone-m">Телефон <span class="required">*</span></label>
+                            <input type="tel" id="phone-m" name="phone" autocomplete="tel" inputmode="tel" placeholder="+971 …" required minlength="7" maxlength="20" />
+                            <span class="form-error" data-error="phone"></span>
+                        </div>
+
+                        <div class="form-field">
+                            <span class="form-label-group">Удобный способ связи <span class="required">*</span></span>
+                            <div class="messenger-group" role="radiogroup" aria-label="Способ связи">
+                                <label class="messenger-option">
+                                    <input type="radio" name="messenger" value="telegram" checked />
+                                    <span>Telegram</span>
+                                </label>
+                                <label class="messenger-option">
+                                    <input type="radio" name="messenger" value="whatsapp" />
+                                    <span>WhatsApp</span>
+                                </label>
+                                <label class="messenger-option">
+                                    <input type="radio" name="messenger" value="phone" />
+                                    <span>Звонок</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <label class="consent">
+                            <input type="checkbox" name="consent" required />
+                            <span>Согласен с обработкой персональных данных по <a href="privacy.html">Политике конфиденциальности</a></span>
+                        </label>
+                        <span class="form-error" data-error="consent"></span>
+
+                        <div class="form-alert form-alert--success" data-alert="success" hidden>
+                            Заявка получена. Свяжемся с вами в ближайшее рабочее время.
+                        </div>
+                        <div class="form-alert form-alert--error" data-alert="error" hidden>
+                            Не удалось отправить заявку. Напишите нам в Telegram <a href="https://t.me/ivanborodach">@ivanborodach</a>.
+                        </div>
+
+                        <button type="submit" class="btn submit-btn">
+                            <span class="btn-label">Получить консультацию по TRC</span>
+                            <span class="btn-spinner" hidden>Отправляем…</span>
+                        </button>
+                    </form>
+                </div>
+
                 <p class="cta-footnote">
                     Команда WTP в Дубае работает напрямую с FTA. Ваши данные используем только
                     для подготовки ответа.
